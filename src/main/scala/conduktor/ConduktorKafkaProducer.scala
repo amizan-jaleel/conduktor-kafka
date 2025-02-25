@@ -24,12 +24,12 @@ object ConduktorKafkaProducer {
         TopicConfig.CLEANUP_POLICY_CONFIG -> "delete", // not using compaction
         TopicConfig.RETENTION_MS_CONFIG -> "3600000", // 1 hour retention
       ).asJava
-      val newTopic = new NewTopic(topic, numPartitions, replicationFactor)
+      val newTopic = new NewTopic(topic, numPartitions, replicationFactor).configs(topicConfig)
       val createResult = adminClient.createTopics(List(newTopic).asJava)
       createResult.all().get()
-      println(s"✅ Topic '$topic' created with $numPartitions partitions.")
+      println(s"Topic '$topic' created with $numPartitions partitions.")
     } catch {
-      case e: Exception => println(s"⚠️ Error creating topic: ${e.getMessage}")
+      case e: Exception => println(s"Error creating topic: ${e.getMessage}")
     } finally {
       adminClient.close()
     }

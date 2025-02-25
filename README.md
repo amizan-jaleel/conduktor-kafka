@@ -1,6 +1,6 @@
 ## Getting Started
 
-### 1️⃣ Launch Kafka with Docker
+### Launch Kafka with Docker
 First, start Kafka and Zookeeper using the provided Docker Compose file:
 
 ```sh
@@ -9,7 +9,7 @@ docker-compose -f zk-single-kafka-single.yml up -d
 
 This will spin up a single-node Kafka and Zookeeper instance.
 
-### 2️⃣ Run the Scala Service
+### Run the Scala Service
 Ensure you have **SBT** installed, then start the service:
 
 ```sh
@@ -30,7 +30,7 @@ Options:
 - `--topic [topic]` → Set the topic name to be written to. Defaults to `test-topic` otherwise.
 - If no arguments are passed, only the Consumer is run. This prevents re-writing records to existing partitions.
 
-### 3️⃣ Access the HTTP Endpoint
+### Access the HTTP Endpoint
 Once the service is running, you can query Kafka messages using your browser or a tool like `curl`:
 
 ```
